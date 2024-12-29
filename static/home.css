@@ -1,0 +1,155 @@
+<<<<<<< HEAD
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f4f8;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 150vh;
+    text-align: center;
+    flex-direction: column;
+    background-image: url("../static/homepage.jpg");
+    background-size: cover;
+}
+
+h2 {
+    font-size: 40px;
+    color: #333;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+button {
+    padding: 14px 28px;
+    margin: 10px;
+    border: none;
+    border-radius: 8px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 200px;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+button:nth-child(1) {
+    background-color: #4CAF50;
+    color: white;
+}
+
+button:nth-child(2) {
+    background-color: #008CBA;
+    color: white;
+}
+
+button:nth-child(3) {
+    background-color: #ff6347;
+    color: white;
+}
+
+button:nth-child(4) {
+    background-color: #f39c12;
+    color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+    h2 {
+        font-size: 35px;
+    }
+
+    button {
+        width: 220px;
+        font-size: 18px;
+    }
+}
+=======
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f4f8;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 150vh;
+    text-align: center;
+    flex-direction: column;
+    background-image: url("../static/homepage.jpg");
+    background-size: cover;
+}
+
+h2 {
+    font-size: 40px;
+    color: #333;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+button {
+    padding: 14px 28px;
+    margin: 10px;
+    border: none;
+    border-radius: 8px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 200px;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+button:nth-child(1) {
+    background-color: #4CAF50;
+    color: white;
+}
+
+button:nth-child(2) {
+    background-color: #008CBA;
+    color: white;
+}
+
+button:nth-child(3) {
+    background-color: #ff6347;
+    color: white;
+}
+
+button:nth-child(4) {
+    background-color: #f39c12;
+    color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+    h2 {
+        font-size: 35px;
+    }
+
+    button {
+        width: 220px;
+        font-size: 18px;
+    }
+}
+>>>>>>> 6eb9e7f (deploy)

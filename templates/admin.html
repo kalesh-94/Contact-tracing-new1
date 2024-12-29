@@ -1,0 +1,193 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/admin.css">
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+</head>
+<body>
+
+    <h2>Admin Panel</h2>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Last Location</th>
+                <th>Timestamp</th>
+                <th>Infection Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.username }}</td>
+                <td>
+                    {% set user_location = user_locations | selectattr('username', 'equalto', user.username) | first %}
+                    {% if user_location %}
+                        {{ user_location.latitude }}, {{ user_location.longitude }}
+                    {% else %}
+                        No location available
+                    {% endif %}
+                </td>
+                <td>
+                    {% if user_location %}
+                        {{ user_location.timestamp }}
+                    {% else %}
+                        N/A
+                    {% endif %}
+                </td>
+                <td>
+                    {{ 'Infected' if user.is_infected else 'Uninfected' }}
+                </td>
+                <td>
+                    <button onclick="updateStatus({{ user.id }}, true)">Mark Infected</button>
+                    <button onclick="updateStatus({{ user.id }}, false)">Mark Uninfected</button>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div id="map" style="height: 500px;"></div>
+
+    <script>
+        // Initialize the map
+        const map = L.map('map').setView([0, 0], 2);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        // Add markers for users
+        var userLocations = {{ user_locations | tojson }};
+
+        userLocations.forEach(function(user) {
+            var color = user.is_infected ? 'red' : 'green';
+            L.circleMarker([user.latitude, user.longitude], {
+                color: color,
+                radius: 8
+            })
+            .addTo(map)
+            .bindPopup(user.username + " - " + (user.is_infected ? "Infected" : "Uninfected"));
+        });
+
+        // Function to update infection status
+        function updateStatus(userId, isInfected) {
+            fetch('/update_status', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ user_id: userId, is_infected: isInfected })
+            }).then(response => {
+                if (response.ok) {
+                    location.reload(); // Reload the page to reflect changes
+                } else {
+                    alert("Failed to update status");
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>
+=======
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/admin.css">
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+</head>
+<body>
+
+    <h2>Admin Panel</h2>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Last Location</th>
+                <th>Timestamp</th>
+                <th>Infection Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.username }}</td>
+                <td>
+                    {% set user_location = user_locations | selectattr('username', 'equalto', user.username) | first %}
+                    {% if user_location %}
+                        {{ user_location.latitude }}, {{ user_location.longitude }}
+                    {% else %}
+                        No location available
+                    {% endif %}
+                </td>
+                <td>
+                    {% if user_location %}
+                        {{ user_location.timestamp }}
+                    {% else %}
+                        N/A
+                    {% endif %}
+                </td>
+                <td>
+                    {{ 'Infected' if user.is_infected else 'Uninfected' }}
+                </td>
+                <td>
+                    <button onclick="updateStatus({{ user.id }}, true)">Mark Infected</button>
+                    <button onclick="updateStatus({{ user.id }}, false)">Mark Uninfected</button>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div id="map" style="height: 500px;"></div>
+
+    <script>
+        // Initialize the map
+        const map = L.map('map').setView([0, 0], 2);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        // Add markers for users
+        var userLocations = {{ user_locations | tojson }};
+
+        userLocations.forEach(function(user) {
+            var color = user.is_infected ? 'red' : 'green';
+            L.circleMarker([user.latitude, user.longitude], {
+                color: color,
+                radius: 8
+            })
+            .addTo(map)
+            .bindPopup(user.username + " - " + (user.is_infected ? "Infected" : "Uninfected"));
+        });
+
+        // Function to update infection status
+        function updateStatus(userId, isInfected) {
+            fetch('/update_status', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ user_id: userId, is_infected: isInfected })
+            }).then(response => {
+                if (response.ok) {
+                    location.reload(); // Reload the page to reflect changes
+                } else {
+                    alert("Failed to update status");
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>
+>>>>>>> 6eb9e7f (deploy)

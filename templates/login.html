@@ -1,0 +1,93 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>User Login</title>
+
+    <link rel="stylesheet" href="/static/login.css">
+    
+
+
+</head>
+
+<body>
+
+    <form action="/user/login" method="POST">
+        <h2>User Login</h2>
+
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <!-- Hidden fields for latitude and longitude -->
+        <input type="hidden" id="latitude" name="latitude">
+        <input type="hidden" id="longitude" name="longitude">
+
+        <button type="submit">Login</button>
+    </form>
+
+    <script>
+        // Get the user's current location and set the hidden inputs
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                document.getElementById('latitude').value = position.coords.latitude;
+                document.getElementById('longitude').value = position.coords.longitude;
+            });
+        } else {
+            alert("Geolocation is not supported by this browser.");
+        }
+    </script>
+
+</body>
+
+</html>
+=======
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>User Login</title>
+
+    <link rel="stylesheet" href="/static/login.css">
+    
+
+
+</head>
+
+<body>
+
+    <form action="/user/login" method="POST">
+        <h2>User Login</h2>
+
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <!-- Hidden fields for latitude and longitude -->
+        <input type="hidden" id="latitude" name="latitude">
+        <input type="hidden" id="longitude" name="longitude">
+
+        <button type="submit">Login</button>
+    </form>
+
+    <script>
+        // Get the user's current location and set the hidden inputs
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                document.getElementById('latitude').value = position.coords.latitude;
+                document.getElementById('longitude').value = position.coords.longitude;
+            });
+        } else {
+            alert("Geolocation is not supported by this browser.");
+        }
+    </script>
+
+</body>
+
+</html>
+>>>>>>> 6eb9e7f (deploy)
